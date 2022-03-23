@@ -1,0 +1,42 @@
+[
+    {
+        "codLibro"   : 1,
+        "tituloLibro": "Curso de HTML",
+        "autorLibro" : "Juan Rodríguez",
+        "precioLibro": 90,
+        "cantidad"   : 5,
+        "urlPortada" : "https://w0.peakpx.com/wallpaper/993/295/HD-wallpaper-html5-glitter-logo-programming-language-grid-metal-background-html5-creative-programming-language-signs-html5-logo.jpg"
+    },
+    {
+        "codLibro"   : 2,
+        "tituloLibro": "Curso de CSS",
+        "autorLibro" : "Rodrigo González",
+        "precioLibro": 120,
+        "cantidad"   : 8,
+        "urlPortada" : "https://www.solucionex.com/sites/default/files/posts/imagen/css_blog.png"
+    },
+    {
+        "codLibro"   : 3,
+        "tituloLibro": "Curso de JavaScript",
+        "autorLibro" : "Facundo Fernandez",
+        "precioLibro": 150,
+        "cantidad"   : 14,
+        "urlPortada" : "https://www.hostinger.es/tutoriales/wp-content/uploads/sites/7/2018/08/que-es-javascript-768x478.jpg"
+    },
+    {
+        "codLibro"   : 4,
+        "tituloLibro": "Curso de PHP",
+        "autorLibro" : "Esteban Pérez",
+        "precioLibro": 140,
+        "cantidad"   : 3,
+        "urlPortada" : "https://www.qualitydevs.com/wp-content/uploads/2021/05/PHP-Quality-Devs-1-1288x724.jpg"
+    },
+    {
+        "codLibro"   : 5,
+        "tituloLibro": "Curso de Laravel",
+        "autorLibro" : "Julio Ocampo",
+        "precioLibro": 135,
+        "cantidad"   : 7,
+        "urlPortada" : "https://www.techcronus.com/wp-content/uploads/2019/06/Laravel-best-PHP-Framework-1568x1045.jpg"
+    }
+]

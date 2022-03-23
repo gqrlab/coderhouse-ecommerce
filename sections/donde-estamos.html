@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es-uy">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Ubicación y teléfono de contacto" />
+    <title>¿Dónde estamos? - Coder Books - Libros para programadores</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../src/css/styles-fixes.css" rel="stylesheet">
+
+    <!-- Botostrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="container d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+        <a href="../index.html"
+            class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none fs-5"></i><i
+                class="fs-1 bi bi-book"></i><b>&nbsp;Coder Books</b></a>
+
+        <ul class="nav nav-pills">
+            <li class="nav-item"><a href="../index.html" class="p-2 nav-link link-primary">Inicio</a></li>
+            <li class="nav-item"><a href="./libros.html" class="p-2 nav-link link-primary">Libros</a></li>
+            <li class="nav-item"><a href="../sections/donde-estamos.html"
+                    class="p-2 nav-link link-primary active">¿Dónde estamos?</a></li>
+            <li id="ver-carrito" class="nav-item"><a href="sections/carrito.html" class="p-2 nav-link link-primary"><i
+                        class="bi bi-cart-fill"></i> <span id="carrito-icono-cantidad"></span> (Mostrar/Ocultar)</a>
+            </li>
+        </ul>
+    </header>
+
+    <div class="container">
+        <!-- Carrito -->
+        <table id="tabla-carrito" class="table d-none">
+            <thead>
+                <tr>
+                    <th scope="col">Código</th>
+                    <th scope="col">Título</th>
+                    <th scope="col">Autor</th>
+                    <th scope="col">Cantidad</th>
+                    <th scope="col">Quitar/Agregar</th>
+                    <th scope="col">Precio</th>
+                </tr>
+            </thead>
+            <tbody id="items"></tbody>
+            <tfoot>
+                <tr id="footer">
+                    <th scope="row" colspan="5"></th>
+                </tr>
+            </tfoot>
+        </table>
+
+        <!-- Contenido principal -->
+        <div class="container min-vh-100">
+            <!-- Mensaje de bienvenida -->
+            <div class="px-2 py-2 my-5 text-center">
+                <h1 class="display-5 fw-bold">¿Dónde estamos?</h1>
+                <div class="col-lg-6 mx-auto">
+                    <p class="lead mb-4">Consulte nuestras vías de comunicación.<br>¡Le responderemos a la brevedad!</p>
+                </div>
+            </div>
+
+            <!-- Descripción de las opciones -->
+            <div class="row g-5">
+                <div class="col-md-6">
+                    <h2>Vias de comunicación:</h2>
+                    <p>Puede contactarse por las siguient vías, con gusto responderemos a todas sus inquietudes.</p>
+                    <ul class="icon-list">
+                        <li><i class="fs-4 bi bi-whatsapp"></i> WhatsApp: (+599) 079156 121</a></li>
+                        <li><i class="fs-4 bi bi-at"></i>E-mail: contacto@coderbooks.zxc</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-6">
+                    <h2>Mapa</h2>
+                    <iframe class="p-2"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26174.861016530293!2d-56.16786865163826!3d-34.91002224438402!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x959f810da5ba5265%3A0x7e2c48069abb0e84!2sPocitos%2C%2011300%20Montevideo%2C%20Departamento%20de%20Montevideo!5e0!3m2!1ses!2suy!4v1648058396471!5m2!1ses!2suy"
+                        width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+
+        <!-- HTML TEMPLATES -->
+        <!-- Template productos -->
+        <template id="template-card">
+            <div class="col-3 mb-2">
+                <div class="card">
+                    <div class="card-body">
+                        <img class="card-img-top" src="" alt="">
+                        <h6></h6>
+                        <h4></h4>
+                        <p class="precio-articulos"></p>
+                        <button class="btn btn-dark agregar-carrito">Agregar <i class="bi bi-cart4"></i></button>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+        <!-- Template carrito -->
+        <template id="template-carrito">
+            <tr>
+                <td scope="row">id</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <button class="btn btn-danger btn-sm">
+                        -
+                    </button>
+                    <button class="btn btn-info btn-sm">
+                        +
+                    </button>
+                </td>
+                <td>$ <span></span></td>
+            </tr>
+        </template>
+
+        <!-- Template footer -->
+        <template id="template-footer">
+            <th scope="row" colspan="1">Total productos</th>
+            <td></td>
+            <td scope="row" colspan="1">
+                <button class="btn btn-secondary btn-sm" id="vaciar-carrito">
+                    Vaciar carrito
+                </button>
+
+                <button class="btn btn-success btn-sm" id="finalizar-compra">
+                    Finalizar compra
+                </button>
+            </td>
+            <td class="font-weight-bold"><span class="precio-articulos"></span></td>
+        </template>
+
+        <!-- Footer -->
+        <div class="container border-top bg-dark">
+            <footer class="py-3 my-4">
+                <p class="text-center text-muted fs-6">Coder Books - Libros para programadores</p>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- SweetAlert2 -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Scripts -->
+    <!-- <script src="../src/js/fetchData.js" type="module"></script> -->
+    <script src="../src/js/index.js" type="module"></script>
+    <script src="../src/js/carrito.js" type="module"></script>
+    <script src="../src/js/formularioBusqueda.js" type="module"></script>
+</body>
+
+</html>
